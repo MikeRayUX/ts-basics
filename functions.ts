@@ -33,3 +33,32 @@ export const introduce = (salutation: string, names: string[]): string => {
 export function getName(user: { first: string; last: string }): string {
   return `${user?.first ?? "first"} ${user?.last ?? "last"}`;
 }
+
+// Functions that take a callback as an argument
+export function printToFile(text: string, callback: () => void): void {
+  console.log(text);
+  callback();
+}
+
+// can be imported in other modules and reused for similar functions
+export type MutationFunction = (v: number) => number;
+export function arrayMutate(
+  numbers: number[],
+  mutate: MutationFunction
+): number[] {
+  return numbers.map(mutate);
+}
+
+const myNewMutateFunction: MutationFunction = (v: number) => {
+  return v * 100;
+};
+
+console.log(arrayMutate([1, 2, 3], (v) => v * 10));
+
+// closures (functions that return functions)
+export function createAdder(num: number): (val: number) => number {
+  return (val: number) => num + val;
+}
+
+const addOne = createAdder(1);
+console.log("addOne(55)", addOne(55));
