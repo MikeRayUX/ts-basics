@@ -9,12 +9,12 @@ export const addStrings = (str1: string, str2: string = ""): string => {
   return `${str1} ${str2}`;
 };
 
-// Optional arguments either or
+// Optional arguments either or (type | type)
 export const format = (title: string, param: string | number): string => {
   return `${title} ${param}`;
 };
 
-// Functions that don't return anything use the void return type
+// Functions that don't return anything use the 'void' return type
 export const printFormat = (title: string, param: string | number): void => {
   console.log(format(title, param));
 };
